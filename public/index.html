@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Student Management</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+
+            background-image:
+            url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 800'%3E%3Crect width='1200' height='800' fill='%23050505'/%3E%3Cpath d='M0 650 Q400 300 1200 100' stroke='%23b8860b' stroke-width='3' fill='none' opacity='.5'/%3E%3Cpath d='M0 750 Q500 400 1200 200' stroke='%23ffd700' stroke-width='2' fill='none' opacity='.3'/%3E%3Ccircle cx='950' cy='150' r='180' fill='%23d4af37' opacity='.08'/%3E%3C/svg%3E");
+
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+
+            color: white;
+            text-align: center;
+        }
+
+        h1 {
+            color: gold;
+            padding: 30px;
+            font-size: 35px;
+            letter-spacing: 3px;
+        }
+
+        hr {
+            border: 1px solid gold;
+        }
+
+        a {
+            color: gold;
+            text-decoration: none;
+            font-size: 16px;
+            margin: 10px;
+        }
+
+        a:hover {
+            color: white;
+        }
+
+        .menu {
+            margin-top: 50px;
+        }
+
+        button {
+            background-color: black;
+            color: gold;
+            border: 2px solid gold;
+            padding: 14px 30px;
+            width: 250px;
+            font-size: 17px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: gold;
+            color: black;
+            transform: scale(1.05);
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <h1>STUDENT MANAGEMENT</h1>
+
+    <hr>
+
+    <br>
+
+    <a href="index.html">Home</a> |
+    <a href="list.html">List Students</a> |
+    <a href="listOne.html">List Required Student</a> |
+    <a href="insert.html">Insert Student</a> |
+    <a href="update.html">Update Student</a> |
+    <a href="delete.html">Delete Student</a>
+
+    <br><br>
+
+    <hr>
+
+    <div class="menu">
+
+        <button onclick="location.href='list.html'">
+            1. List Students
+        </button>
+
+        <br><br>
+
+        <button onclick="location.href='listOne.html'">
+            2. List Required Student
+        </button>
+
+        <br><br>
+
+        <button onclick="location.href='insert.html'">
+            3. Insert Student
+        </button>
+
+        <br><br>
+
+        <button onclick="location.href='update.html'">
+            4. Update Student
+        </button>
+
+        <br><br>
+
+        <button onclick="location.href='delete.html'">
+            5. Delete Student
+        </button>
+
+    </div>
+
+</body>
+
+</html>

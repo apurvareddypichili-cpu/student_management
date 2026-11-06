@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>List Students</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+
+            background-image:
+            url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 800'%3E%3Crect width='1200' height='800' fill='%23050505'/%3E%3Cpath d='M0 650 Q400 300 1200 100' stroke='%23b8860b' stroke-width='3' fill='none' opacity='.5'/%3E%3Cpath d='M0 750 Q500 400 1200 200' stroke='%23ffd700' stroke-width='2' fill='none' opacity='.3'/%3E%3Ccircle cx='950' cy='150' r='180' fill='%23d4af37' opacity='.08'/%3E%3C/svg%3E");
+
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+
+            color: white;
+            text-align: center;
+        }
+
+        h1 {
+            color: gold;
+            padding: 30px;
+            font-size: 35px;
+            letter-spacing: 3px;
+        }
+
+        hr {
+            border: 1px solid gold;
+        }
+
+        a {
+            color: gold;
+            text-decoration: none;
+            font-size: 16px;
+            margin: 10px;
+        }
+
+        a:hover {
+            color: white;
+        }
+
+        button {
+            background-color: black;
+            color: gold;
+            border: 2px solid gold;
+            padding: 12px 30px;
+            width: 220px;
+            font-size: 17px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: gold;
+            color: black;
+            transform: scale(1.05);
+        }
+
+        table {
+            margin: auto;
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 65%;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        th {
+            background-color: #b8860b;
+            color: black;
+            padding: 15px;
+            font-size: 18px;
+        }
+
+        td {
+            border: 1px solid gold;
+            padding: 12px;
+            color: white;
+            font-size: 16px;
+        }
+
+        tr:hover td {
+            background-color: #332600;
+        }
+
+        .container {
+            margin-top: 40px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <h1>LIST OF STUDENTS</h1>
+
+    <hr>
+
+    <br>
+
+    <a href="index.html">Home</a> |
+    <a href="list.html">List Students</a> |
+    <a href="listOne.html">List Required Student</a> |
+    <a href="insert.html">Insert Student</a> |
+    <a href="update.html">Update Student</a> |
+    <a href="delete.html">Delete Student</a>
+
+    <hr>
+
+    <div class="container">
+
+        <button onclick="loadStudents()">
+            Refresh List
+        </button>
+
+        <br><br>
+
+        <table id="studentTable">
+
+        </table>
+
+        <br>
+
+        <button onclick="location.href='index.html'">
+            Home Page
+        </button>
+
+    </div>
+
+    <script>
+
+        loadStudents();
+
+        function loadStudents()
+        {
+            fetch("/students")
+
+            .then(response => response.json())
+
+            .then(data => {
+
+                let table = document.getElementById("studentTable");
+
+                table.innerHTML = `
+                <tr>
+                    <th>Student Number</th>
+                    <th>Name</th>
+                    <th>Total</th>
+                </tr>`;
+
+                data.forEach(student => {
+
+                    table.innerHTML += `
+                    <tr>
+                        <td>${student.student_id}</td>
+                        <td>${student.student_name}</td>
+                        <td>${student.total}</td>
+                    </tr>
+                    `;
+
+                });
+
+            });
+
+        }
+
+    </script>
+
+</body>
+</html>

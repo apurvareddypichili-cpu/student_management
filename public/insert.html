@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Insert Student</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+
+            background-image:
+            url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 800'%3E%3Crect width='1200' height='800' fill='%23050505'/%3E%3Cpath d='M0 650 Q400 300 1200 100' stroke='%23b8860b' stroke-width='3' fill='none' opacity='.5'/%3E%3Cpath d='M0 750 Q500 400 1200 200' stroke='%23ffd700' stroke-width='2' fill='none' opacity='.3'/%3E%3Ccircle cx='950' cy='150' r='180' fill='%23d4af37' opacity='.08'/%3E%3C/svg%3E");
+
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+
+            color: white;
+            text-align: center;
+        }
+
+        h1 {
+            color: gold;
+            padding: 30px;
+            font-size: 35px;
+            letter-spacing: 3px;
+        }
+
+        hr {
+            border: 1px solid gold;
+        }
+
+        a {
+            color: gold;
+            text-decoration: none;
+            font-size: 16px;
+            margin: 10px;
+        }
+
+        a:hover {
+            color: white;
+        }
+
+        input {
+            background: #1a1a1a;
+            color: white;
+            border: 2px solid gold;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 16px;
+            margin-left: 10px;
+        }
+
+        button {
+            background-color: black;
+            color: gold;
+            border: 2px solid gold;
+            padding: 12px 30px;
+            width: 220px;
+            font-size: 17px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: gold;
+            color: black;
+            transform: scale(1.05);
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <h1>INSERT STUDENT</h1>
+
+    <hr>
+
+    <br>
+
+    <a href="index.html">Home</a> |
+    <a href="list.html">List Students</a> |
+    <a href="listOne.html">List Required Student</a> |
+    <a href="insert.html">Insert Student</a> |
+    <a href="update.html">Update Student</a> |
+    <a href="delete.html">Delete Student</a>
+
+    <hr>
+
+    <div class="container">
+
+        Student Number
+        <input type="number" id="sno">
+
+        <br><br>
+
+        Student Name
+        <input type="text" id="name">
+
+        <br><br>
+
+        Total Marks
+        <input type="number" id="total">
+
+        <br><br>
+
+        <button onclick="saveStudent()">Save</button>
+
+        <br><br>
+
+        <button onclick="location.href='index.html'">Home Page</button>
+
+    </div>
+
+    <script>
+
+        function saveStudent()
+        {
+            let sno = document.getElementById("sno").value;
+            let name = document.getElementById("name").value;
+            let total = document.getElementById("total").value;
+
+            fetch("/students", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    sno: sno,
+                    name: name,
+                    total: total
+                })
+            })
+            .then(response => response.text())
+            .then(message => {
+                alert(message);
+                location.href = "index.html";
+            });
+
+        }
+
+    </script>
+
+</body>
+</html>
